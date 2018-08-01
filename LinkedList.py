@@ -13,10 +13,11 @@ class Node:
 
 
 class linkedList(object):
-    def __init__(self, *args):
-        self.head = None
+    def __init__(self, items):
         self.size = 0
-        self.addToEnd(args)
+        self.head = None
+        for each in items:
+            self.addToEnd(each)
 
     def getSize(self):
         return self.size
@@ -76,8 +77,9 @@ class linkedList(object):
 
 l = linkedList(["james", "jack", "gregg", "tim", "kevin", "spam"])
 
-itemToDel = 1
 
-print (l.items())
-l.removeItem(itemToDel)
-print (l.items())
+# itemToDel = 1
+
+# print (l.items())
+# l.removeItem(itemToDel)
+# print (l.items())
