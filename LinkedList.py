@@ -12,10 +12,11 @@ class Node:
         self.next = next
 
 
-class linkedList:
-    def __init__(self):
+class linkedList(object):
+    def __init__(self, *args):
         self.head = None
         self.size = 0
+        self.addToEnd(args)
 
     def getSize(self):
         return self.size
@@ -72,19 +73,11 @@ class linkedList:
             del myNode
         else:
             print "Node", index, "does not exist"
-        
 
-l = linkedList()
-l.addToEnd("james")
-l.addToEnd("jack")
-l.addToEnd("gregg")
-l.addToEnd("tim")
-l.addToEnd("kevin")
-l.addToEnd("spam")
+l = linkedList(["james", "jack", "gregg", "tim", "kevin", "spam"])
 
 itemToDel = 1
 
 print (l.items())
-# print (l.itemAt(itemToDel).data)
 l.removeItem(itemToDel)
 print (l.items())
