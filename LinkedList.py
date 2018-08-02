@@ -77,9 +77,10 @@ class linkedList(object):
 
 l = linkedList(["james", "jack", "gregg", "tim", "kevin", "spam"])
 
+print (l.items())
+print l.itemAt(2).data
+
 
 # itemToDel = 1
-
-# print (l.items())
 # l.removeItem(itemToDel)
 # print (l.items())
