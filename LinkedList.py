@@ -17,7 +17,7 @@ class linkedList(object):
         self.size = 0
         self.head = None
         for each in items:
-            self.addToEnd(each)
+            self.append(each)
 
     def getSize(self):
         return self.size
@@ -31,7 +31,7 @@ class linkedList(object):
                 curNode = curNode.next
             return curNode
     
-    def addToEnd(self, value):
+    def append(self, value):
         newNode = Node(value)
         lastNode = self.findTail()
         if lastNode != None:
@@ -59,7 +59,7 @@ class linkedList(object):
         else:
             return None
 
-    def removeItem(self, index):
+    def deleteAt(self, index):
         myNode = self.itemAt(index)
         if myNode:
             nextNode = myNode.next
@@ -73,14 +73,41 @@ class linkedList(object):
                     prevNode.next = None
             del myNode
         else:
-            print "Node", index, "does not exist"
+            print ("Node", index, "does not exist")
+
+    def insertAt(self, value, index):
+        length = self.getSize()
+        newNode = Node(value)
+        nextNode = self.itemAt(index)
+        if index <= length + 1:
+            if nextNode:
+                if index == 0:
+                    self.head = newNode
+                    newNode.next = nextNode
+                else:
+                    prevNode = self.itemAt(index - 1)
+                    newNode.next = nextNode
+                    prevNode.next = newNode
+            else:
+                if index == 0:
+                    self.head = newNode
+                else:
+                    prevNode = self.itemAt(index - 1)
+                    prevNode.next = newNode
+                    newNode.next = None
+            self.size += 1
+        else:
+            print ("Sorry,", index, "is out of range")
+
 
 l = linkedList(["james", "jack", "gregg", "tim", "kevin", "spam"])
 
+print (l.itemAt(2).data)
+print (l.getSize())
+l.insertAt("julia", 7)
+print (l.getSize())
 print (l.items())
-print l.itemAt(2).data
-
 
 # itemToDel = 1
-# l.removeItem(itemToDel)
+# l.deleteAt(itemToDel)
 # print (l.items())
