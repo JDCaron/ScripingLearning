@@ -76,36 +76,29 @@ class linkedList(object):
             print ("Node", index, "does not exist")
 
     def insertAt(self, value, index):
-        length = self.getSize()
         newNode = Node(value)
         nextNode = self.itemAt(index)
-        if index <= length + 1:
-            if nextNode:
-                if index == 0:
-                    self.head = newNode
+        if index != 0:
+            prevNode = self.itemAt(index - 1)
+            if prevNode:
+                prevNode.next = newNode
+                if nextNode:
                     newNode.next = nextNode
-                else:
-                    prevNode = self.itemAt(index - 1)
-                    newNode.next = nextNode
-                    prevNode.next = newNode
+                self.size += 1
             else:
-                if index == 0:
-                    self.head = newNode
-                else:
-                    prevNode = self.itemAt(index - 1)
-                    prevNode.next = newNode
-                    newNode.next = None
-            self.size += 1
+                print index, 'is out of range'
+                print 'Current list length range is:', "0 -", self.getSize()
         else:
-            print ("Sorry,", index, "is out of range")
+            self.head = newNode
+            if nextNode:
+                newNode.next = nextNode
+            self.size += 1
+            
 
 
 l = linkedList(["james", "jack", "gregg", "tim", "kevin", "spam"])
 
-print (l.itemAt(2).data)
-print (l.getSize())
-l.insertAt("julia", 7)
-print (l.getSize())
+l.insertAt("julia", 6)
 print (l.items())
 
 # itemToDel = 1
