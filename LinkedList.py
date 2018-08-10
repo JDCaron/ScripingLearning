@@ -94,12 +94,30 @@ class linkedList(object):
                 newNode.next = nextNode
             self.size += 1
             
+    def replaceAt(self, value, index):
+        newNode = Node(value)
+        oldNode = self.itemAt(index)
+        if oldNode:
+            newNode.next = oldNode.next
+            oldNode.next = None
+            if index != 0:
+                prevNode = self.itemAt(index - 1)
+                prevNode.next = newNode
+            else:
+                self.head = newNode                
+            del oldNode
+        else:
+            print 'Node',index,'does not exist'
 
 
 l = linkedList(["james", "jack", "gregg", "tim", "kevin", "spam"])
 
 l.insertAt("julia", 6)
 print (l.items())
+
+l.replaceAt("stacey", 2)
+print (l.items())
+
 
 # itemToDel = 1
 # l.deleteAt(itemToDel)
